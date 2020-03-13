@@ -32,6 +32,8 @@ optional arguments:
                         Options are: heroku, github
 ```
 
+![weathervane](https://github.com/shipwreckdev/weathervane/blob/master/assets/weathervane_sample.png)
+
 ### Sample CLI Usage
 
 `python3 wv.py -p github, heroku` - gather details on Heroku and GitHub.
