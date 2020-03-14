@@ -20,7 +20,7 @@ Run `pip3 install -r requirements.txt` to install dependencies.
 The tool can be invoked via the command line and has various options that can be passed in:
 
 ```bash
-usage: wv.py [-h] [-p PROVIDERS]
+usage: wv.py [-h] [-p PROVIDERS] [-c]
 
 Gather diagnostic information from third party providers for use during
 incidents and diagnostic operations.
@@ -30,13 +30,15 @@ optional arguments:
   -p PROVIDERS, --providers PROVIDERS
                         Comma separated list of providers to get reports from.
                         Options are: heroku, github
+  -c, --compact         Show compact summary instead of verbose output.
+                        Ignores incident details and header.
 ```
 
-![weathervane](https://github.com/shipwreckdev/weathervane/blob/master/assets/weathervane_sample.png)
+Passing in the `-c` flag suppresses incident details and removes the header.
 
 ### Sample CLI Usage
 
-`python3 wv.py -p github, heroku` - gather details on Heroku and GitHub.
+`python3 wv.py -p github,heroku` - gather details on Heroku and GitHub.
 
 ## Running in Docker
 
