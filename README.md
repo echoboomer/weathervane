@@ -1,23 +1,32 @@
 # shipwreck / weathervane
 
-Gather diagnostic information from third party providers for use during incidents and diagnostic operations.
+![weathervane](https://github.com/shipwreckdev/weathervane/blob/master/assets/wv.png)
 
-Meant to assist when running incidents to save some time and aggregate statuses of major providers.
+Weathervane allows a team to gather diagnostic information from third party providers in one place.
+
+The tool was built to assist when running incidents to save some time and aggregate statuses of major providers.
+
+This comes in handy when service interruptions are occurring. A handy way to implement the tool is to have incident bots run it at the beginning of incident channels.
 
 ## Requirements
 
-The tool requires Python 3.
-
-Run `pip3 install -r requirements.txt` to install dependencies.
+* `python3`
 
 ## Current Provider Compatibility
 
-* Heroku
 * GitHub
+* Heroku
 
 ## Usage
 
-The tool can be invoked via the command line and has various options that can be passed in:
+The tool can be cloned from this repository and run locally:
+
+* `git clone https://github.com/shipwreckdev/weathervane.git`
+* `pip3 install -r requirements.txt`
+
+The tool can then be invoked via the command line and has various arguments that can be passed in.
+
+To get a quick overview of arguments, run `python3 wv.py -h`:
 
 ```bash
 usage: wv.py [-h] [-p PROVIDERS] [-c]
@@ -34,20 +43,22 @@ optional arguments:
                         Ignores incident details and header.
 ```
 
-Passing in the `-c` flag suppresses incident details and removes the header.
+Passing in the `-c` flag suppresses incident details and removes the header. This is the more useful option if minimal output is required with only a brief statement on service availability.
 
 ### Sample CLI Usage
 
-`python3 wv.py -p github,heroku` - gather details on Heroku and GitHub.
+* `python3 wv.py -p github,heroku` - gather details on Heroku and GitHub.
+* `python3 wv.py -p github,heroku -c` - gather details on Heroku and GitHub, but skip provider incident information.
 
 ## Running in Docker
 
-Alternatively, you can run the tool using Docker, passing arguments the same way:
+Alternatively, you can run the tool using Docker, passing in arguments the same way:
 
-`docker container run shipwreckdev/weathervane -p github`
+`docker container run shipwreckdev/weathervane -p github,heroku -c`
 
-This makes it easy to use the tool in automation or pipelines where Docker is available.
+This makes it easy to use the tool in automation or pipelines where Docker is available, and also avoids the need to clone the repository down locally.
 
-## Update Paths
+## Future Updates
 
-More providers will be added in the future.
+* More providers will be added to the tool.
+* Base APIs are hardcoded into the tool. These could theoretically change, so the ability to override base APIs will be introduced.
