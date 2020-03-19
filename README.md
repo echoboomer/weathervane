@@ -43,7 +43,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -p PROVIDERS, --providers PROVIDERS
                         Comma separated list of providers to get reports from.
-                        Options are: heroku, github
+                        Options are: gcp, github, heroku
   -c, --compact         Show compact summary instead of verbose output.
                         Ignores incident details and header.
 ```
