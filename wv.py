@@ -5,13 +5,15 @@ import os
 import requests
 from termcolor import colored
 
-from lib.utils import color
+from lib.utils import errcolor
+from lib.gcp import get_gcp_status
 from lib.github import get_github_status
 from lib.heroku import get_heroku_status
 
 version = 'v0.1'
 
 # API Base URLs
+gcp_api = "https://status.cloud.google.com"
 github_api = "https://kctbh9vrtdwd.statuspage.io/api/v2"
 heroku_api = "https://status.heroku.com/api/v4"
 
@@ -22,7 +24,7 @@ yesterday = today - timedelta(days = 1)
 
 # Parse for arguments.
 parser = argparse.ArgumentParser(description='Gather diagnostic information from third party providers for use during incidents and diagnostic operations.')
-parser.add_argument('-p', '--providers', dest='providers', type=str, help='Comma separated list of providers to get reports from. Options are: heroku, github', default='')
+parser.add_argument('-p', '--providers', dest='providers', type=str, help='Comma separated list of providers to get reports from. Options are: gcp, github, heroku', default='')
 parser.add_argument('-c', '--compact', dest='compact', help='Show compact summary instead of verbose output. Ignores incident details and header.', action='store_true')
 args = parser.parse_args()
 
@@ -40,6 +42,8 @@ def run():
 
   if 'heroku' in providers:
     get_heroku_status(heroku_api, compact, time, today, yesterday)
+  if 'gcp' in providers:
+    get_gcp_status(gcp_api)
   if 'github' in providers:
     get_github_status(github_api, compact, time)
   if providers == '':

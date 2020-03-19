@@ -1,7 +1,7 @@
 from termcolor import colored
 
 # Colorize function.
-def color(i, cond):
+def errcolor(i, cond):
   if i != cond:
     return(colored(i, 'red'))
   else:

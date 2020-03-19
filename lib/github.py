@@ -1,7 +1,7 @@
 import json
 import requests
 from termcolor import colored
-from .utils import color
+from .utils import errcolor
 
 def get_github_status(github_api, compact, time):
   if not compact:
@@ -19,7 +19,7 @@ def get_github_status(github_api, compact, time):
       d = a['description'] or 'None provided'
 
       print(' Component: ' + n + ' - ' + d)
-      print(' Status: ' + color(s, 'operational'))
+      print(' Status: ' + errcolor(s, 'operational'))
       print()
     print()
 
