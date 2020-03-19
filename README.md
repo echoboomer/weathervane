@@ -8,14 +8,19 @@ The tool was built to assist when running incidents to save some time and aggreg
 
 This comes in handy when service interruptions are occurring. A handy way to implement the tool is to have incident bots run it at the beginning of incident channels.
 
+The core functionality is to capture provider status and current/recent incidents at execution time.
+
 ## Requirements
 
 * `python3`
 
-## Current Provider Compatibility
+## Current Provider Compatibility and Features
 
-* GitHub
-* Heroku
+|Provider|Fetch Current Status|Fetch Incidents|Notes|
+|--------|--------------------|---------------|-----|
+|Google Cloud Platform (GCP)||X|Can fetch three most recent incidents.|
+|GitHub|X|X|Can fetch status and current incidents, if any.|
+|Heroku|X|X|Can fetch status, current incidents, and incidents in the past day.|
 
 ## Usage
 
