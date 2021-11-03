@@ -5,6 +5,6 @@ from termcolor import colored
 
 def errcolor(i, cond):
     if i != cond:
-        return(colored(i, 'red'))
+        return colored(i, "red")
     else:
-        return(colored(i, 'green'))
+        return colored(i, "green")
