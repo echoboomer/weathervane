@@ -16,11 +16,11 @@ The core functionality is to capture provider status and current/recent incident
 
 ## Current Provider Compatibility and Features
 
-|Provider|Fetch Current Status|Fetch Incidents|Notes|
-|--------|--------------------|---------------|-----|
-|Google Cloud Platform (GCP)||X|Can fetch three most recent incidents.|
-|GitHub|X|X|Can fetch status and current incidents, if any.|
-|Heroku|X|X|Can fetch status, current incidents, and incidents in the past day.|
+| Provider                    | Fetch Current Status | Fetch Incidents | Notes                                                               |
+| --------------------------- | -------------------- | --------------- | ------------------------------------------------------------------- |
+| Google Cloud Platform (GCP) |                      | X               | Can fetch three most recent incidents.                              |
+| GitHub                      | X                    | X               | Can fetch status and current incidents, if any.                     |
+| Heroku                      | X                    | X               | Can fetch status, current incidents, and incidents in the past day. |
 
 ## Usage
 
@@ -59,11 +59,6 @@ Passing in the `-c` flag suppresses incident details and removes the header. Thi
 
 Alternatively, you can run the tool using Docker, passing in arguments the same way:
 
-`docker container run shipwreckdev/weathervane -p github,heroku -c`
+`docker run shipwreckdev/weathervane -p github,heroku -c`
 
 This makes it easy to use the tool in automation or pipelines where Docker is available, and also avoids the need to clone the repository down locally.
-
-## Future Updates
-
-* More providers will be added to the tool.
-* Base APIs are hardcoded into the tool. These could theoretically change, so the ability to override base APIs will be introduced.
